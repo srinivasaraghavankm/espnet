@@ -67,7 +67,7 @@ def main(args):
                         help='Subsample input frames x_y_z means subsample every x frame at 1st layer, '
                              'every y frame at 2nd layer etc.')
     # loss
-    parser.add_argument('--ctc_type', default='warpctc', type=str,
+    parser.add_argument('--ctc_type', default='builtin', type=str,
                         choices=['builtin', 'warpctc'],
                         help='Type of CTC implementation to calculate loss.')
     # attention
@@ -108,13 +108,13 @@ def main(args):
     parser.add_argument('--sampling-probability', default=0.0, type=float,
                         help='Ratio of predicted labels fed back to decoder')
     # recognition options to compute CER/WER
-    parser.add_argument('--report-cer', default=False, action='store_true',
+    parser.add_argument('--report-cer', default=True, action='store_true',
                         help='Compute CER on development set')
-    parser.add_argument('--report-wer', default=False, action='store_true',
+    parser.add_argument('--report-wer', default=True, action='store_true',
                         help='Compute WER on development set')
     parser.add_argument('--nbest', type=int, default=1,
                         help='Output N-best hypotheses')
-    parser.add_argument('--beam-size', type=int, default=4,
+    parser.add_argument('--beam-size', type=int, default=10,
                         help='Beam size')
     parser.add_argument('--penalty', default=0.0, type=float,
                         help='Incertion penalty')
